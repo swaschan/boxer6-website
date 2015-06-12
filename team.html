@@ -7,13 +7,104 @@
     <link rel="stylesheet" href="css/foundation.css" />
     <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700|Open+Sans:400,300,600|Montserrat' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/basic.css" />
+    <link rel="stylesheet" href="css/mobilebase.css"/>
     <script src="js/vendor/modernizr.js"></script>
     <script src="js/prefixfree.min.js"></script>
   </head>
   <body>
-    
+    <header class="hero_text" id="team_hero">
+        <h1>Our Team</h1>
+        <h4>Small in number, big in design.</h4>
+        <nav class="team_nav">
+        <select name="nav_dropdown">
+            <option value="all">All</option>
+            <option value="fulltime">Full-time</option>
+            <option value="parttime">Part-time</option>
+          </select>
+        </nav>
+    </header>
+    <section class="wrapper_team">
+    <div class="wrapper_individual wrapper_item">
+      <div class="wrapper_photo">
+
+      </div>
+      <div class="wrapper_data wrapper_teamdata">
+        <h2>Muzzammil Manzoor</h2>
+        <h6>CEO, Web & Graphics Design</h6>
+        <p> Being one of the founders of B6, Muzzammil Manzoor is an integral part of our agency. You can find him @swaschan on Freenode when he's not too busy blowing off steam on San Andreas or Blacklight Retribution or writing long sections of code. Being an ardent perfectionist, you can be assured that his work is top-notch, and spotless.</p>
+      </div>
+
+    </div>
+     <div class="wrapper_individual wrapper_item">
+      <div class="wrapper_photo">
+
+      </div>
+      <div class="wrapper_data wrapper_teamdata">
+        <h2>Tariq Aziz</h2>
+        <h6>Co-Founder, Graphics Design</h6>
+        <p>Hailing from India, Tariq values precision and minimalism above all in his design. He is one of the founders of the agency, and has extensive experience in graphics design. When he's not busy being a lazy fuck, you can find him cultivating his zombie roots over at /r/zombie.</p>
+      </div>
+      
+    </div>
+     <div class="wrapper_individual wrapper_item">
+      <div class="wrapper_photo">
+
+      </div>
+      <div class="wrapper_data wrapper_teamdata">
+        <h2>Jazib Marwat</h2>
+        <h6>Ruby, Video Effects</h6>
+        <p> Jazib Marwat is an aspiring back-end web developer and video effects editor from Pakistan. He likes guns, videogames and talking in the third person.</p>
+      </div>
+      
+    </div>
+     <div class="wrapper_individual wrapper_item">
+      <div class="wrapper_photo">
+
+      </div>
+      <div class="wrapper_data wrapper_teamdata">
+        <h2>Muzammil Zafar</h2>
+        <h6>Sales Rep.</h6>
+        <p> A compulsive reader, literary buff and Warlight player, Muzammil Zafar is not your typical sales agent. He'll do something different. He'll sit you down and listen to your design problems, then patiently prescribe a purported panacea, priced perfectly according to your preferences.
+        He's a people pleaser, and it's his job to make sure our customers are completely satisfied with our design work, and you can be assured they will.
+        You can call him up at +923463185166 or send him an email at mzmlzfr13@gmail.com</p>
+      </div>
+      
+    </div>
+     <div class="wrapper_individual wrapper_item">
+      <div class="wrapper_photo">
+
+      </div>
+      <div class="wrapper_data wrapper_teamdata">
+        <h2>Pablo Lopez</h2>
+        <h6>3D Modelling</h6>
+        <p> Hailing from Spain, Lopez is one of our most experienced members. He is well-versed in 3D modelling and has won many laurels in his field including a Blenderguru Competition. He loves all kinds of machines and technology, but especially cars. His ride of choice is the Subaru Impreza. Sky-blue.</p>
+      </div>
+      
+    </div>
+     <div class="wrapper_individual wrapper_item">
+      <div class="wrapper_photo">
+
+      </div>
+      <div class="wrapper_data wrapper_teamdata">
+        <h2>Booty</h2>
+        <h6>Boots?</h6>
+        <p> Redacted. For the time being...</p>
+      </div>
+      
+    </div>
+    </section>
   <!-- SCRIPTS -->
   <script src="js/vendor/jquery.js"></script>
+  <script src="js/hammer.min.js"></script>
+  <script src="js/jquery.hammer.js"></script>
+  <script>
+  $(".wrapper_item").hammer().bind("doubletap", function(){
+    $titleh2 = $(this).find("h2");
+    $titlebyline = $(this).find("h6");
+    $(this).toggleClass('wrapper_expand');
+    $titleh2.toggleClass('pseudo-remove');
+    $titlebyline.toggleClass("h6-shrink");
+  });
+  </script>
   </body>
   </html>
