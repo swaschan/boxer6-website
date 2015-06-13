@@ -33,15 +33,15 @@ $(function(){
 
 
 	function slide() {
-    timer = setInterval(counter, 5000); 
+    timer = setInterval(counter, 5000);
 	}
 	$pause.click(function(){
 		$(this).find('i').toggleClass('fa-play').toggleClass('fa-pause');
 		if ($(this).hasClass("clicked")){
-    		timer = setInterval(counter, 5000); 
+    		timer = setInterval(counter, 5000);
     		fadetimer = setTimeout(function(){
         	$selectedSlide.removeClass('slider_reveal');
-       		 }, 3000);
+				}, 1500);
 			$(this).removeClass("clicked");
 			console.log("Resumed.")
 		}

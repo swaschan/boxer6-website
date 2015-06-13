@@ -16,15 +16,20 @@
         <h1>Our Team</h1>
         <h4>Small in number, big in design.</h4>
         <nav class="team_nav">
-        <select name="nav_dropdown">
-            <option value="all">All</option>
-            <option value="fulltime">Full-time</option>
-            <option value="parttime">Part-time</option>
-          </select>
+          <div class='selectBox'>
+              <span class='selected' id="dropdownselect"></span>
+              <span class='selectArrow'><i class="fa fa-caret-down"></i></span>
+              <div class="selectOptions" >
+                  <span class="selectOption" value="Option 1">ALL</span>
+                  <span class="selectOption" value="Option 2">FULL-TIME</span>
+                  <span class="selectOption" value="Option 3">PART-TIME</span>
+              </div>
+          </div>
         </nav>
     </header>
+    <span class="wrapper_instructions"><i class="fa fa-circle circle-outer"></i></i>Double Tap to Expand</span>
     <section class="wrapper_team">
-    <div class="wrapper_individual wrapper_item">
+     <div class="wrapper_individual wrapper_item">
       <div class="wrapper_photo">
 
       </div>
@@ -44,7 +49,7 @@
         <h6>Co-Founder, Graphics Design</h6>
         <p>Hailing from India, Tariq values precision and minimalism above all in his design. He is one of the founders of the agency, and has extensive experience in graphics design. When he's not busy being a lazy fuck, you can find him cultivating his zombie roots over at /r/zombie.</p>
       </div>
-      
+
     </div>
      <div class="wrapper_individual wrapper_item">
       <div class="wrapper_photo">
@@ -55,7 +60,7 @@
         <h6>Ruby, Video Effects</h6>
         <p> Jazib Marwat is an aspiring back-end web developer and video effects editor from Pakistan. He likes guns, videogames and talking in the third person.</p>
       </div>
-      
+
     </div>
      <div class="wrapper_individual wrapper_item">
       <div class="wrapper_photo">
@@ -68,7 +73,7 @@
         He's a people pleaser, and it's his job to make sure our customers are completely satisfied with our design work, and you can be assured they will.
         You can call him up at +923463185166 or send him an email at mzmlzfr13@gmail.com</p>
       </div>
-      
+
     </div>
      <div class="wrapper_individual wrapper_item">
       <div class="wrapper_photo">
@@ -79,32 +84,100 @@
         <h6>3D Modelling</h6>
         <p> Hailing from Spain, Lopez is one of our most experienced members. He is well-versed in 3D modelling and has won many laurels in his field including a Blenderguru Competition. He loves all kinds of machines and technology, but especially cars. His ride of choice is the Subaru Impreza. Sky-blue.</p>
       </div>
-      
+
     </div>
      <div class="wrapper_individual wrapper_item">
       <div class="wrapper_photo">
 
       </div>
       <div class="wrapper_data wrapper_teamdata">
-        <h2>Booty</h2>
-        <h6>Boots?</h6>
-        <p> Redacted. For the time being...</p>
+        <h2>Jessica Tailor</h2>
+        <h6>Illustrator/Animator</h6>
+        <p>Booty: A Canadian born, UK trained illustrator/Animator, Jessica has racked up more than five years worth of freelance industry experience, having worked for companies such as World Book Day and Royal Dolton. She also has an unhealthy affinity for cats and retro video games. Especially pacman.</p>
       </div>
-      
+
     </div>
     </section>
   <!-- SCRIPTS -->
   <script src="js/vendor/jquery.js"></script>
   <script src="js/hammer.min.js"></script>
-  <script src="js/jquery.hammer.js"></script>
+  <script src="js/jquery.tapevents.js"></script>
   <script>
-  $(".wrapper_item").hammer().bind("doubletap", function(){
-    $titleh2 = $(this).find("h2");
-    $titlebyline = $(this).find("h6");
+  $('.wrapper_item').on('doubletap', function(e) {
+    var $titleh2 = $(this).find("h2");
+    var $titlebyline = $(this).find("h6");
+    console.log("tapped");
     $(this).toggleClass('wrapper_expand');
     $titleh2.toggleClass('pseudo-remove');
     $titlebyline.toggleClass("h6-shrink");
   });
+  </script>
+  <script>
+  $(function(){
+    //PART 1 - DROPDOWN MENU
+    var $trigger = $("span#dropdownselect");
+    var $dropdown = $("div.selectOptions");
+    var $selectOption = $("span.selectOption");
+    $trigger.text("ALL");
+    function DropTransition(e) {
+      e.toggleClass('dropTrigger');
+    }
+      $trigger.on('click', function(e){
+        DropTransition($(".selectOptions"));
+      })
+      $dropdown.on('click', function(e) {
+        if ($dropdown.hasClass('dropTrigger')) {
+          DropTransition($(".selectOptions"));
+        }
+      })
+    //PART 2 - PANELS
+    var $teamPanels = $(".wrapper_individual");
+    // var $allTime = [5,6];
+    // var $partTime = [1,2,3,4];
+    var allTime = new RegExp("^[0-4]");
+    var i = 0;
+    $teamPanels.each(function(){
+      i++;
+      $(this).attr('team-number', i);
+    })
+
+    function repeatfoo(n){
+      $teamPanels.each(function(){
+        var m = new RegExp(n);
+        var $teamIndex = parseInt($(this).attr('team-number'));
+        if(m.exec($teamIndex)){
+          $(this).fadeOut();
+        }
+        else {
+          $(this).fadeIn();
+        }
+      })
+    }
+
+    function wrapperFade() {
+      $("section.wrapper_team").addClass('wrapper-hide', function(){
+        setTimeout(function(){
+        $("section.wrapper_team").removeClass('wrapper-hide');
+      }, 3000);
+      });
+    }
+    $selectOption.on('click', function(){
+      $("section.wrapper_team").addClass('wrapper-hide');
+      setTimeout(function(){
+      $("section.wrapper_team").removeClass('wrapper-hide');
+    }, 1500);
+        $selectText = $(this).text();
+        $trigger.text($selectText);
+        var indexed = $selectOption.index(this);
+        setTimeout(function(){
+        if (indexed == 0){repeatfoo("^[]");}
+        if (indexed == 1){repeatfoo("^[5-6]");}
+        if (indexed == 2){repeatfoo("^[0-4]");}
+      }, 500)
+          })
+
+
+  })
   </script>
   </body>
   </html>
